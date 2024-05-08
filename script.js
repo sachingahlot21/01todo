@@ -50,38 +50,33 @@ function createTodo() {
 
     inputBox.addEventListener('keypress', function (event) {
 
-        if(event.key === 'Enter'){
-
-       event.preventDefault();
-        var inputBox = document.getElementById('inputBox');
-        var task = inputBox.value.trim();
-        if (task !== '') {
-
-            var newTodo = {
-                id: todos.length + 1,
-                task: task,
-                completed: false
-            };
-
-            todos.push(newTodo);
-
-            localStorage.setItem('todos', JSON.stringify(todos));
-
-            inputBox.value = '';
-
-            showTodos();
-        } else {
-            alert('Please enter a task!');
-        }
-    }});
-    
-    inputBox.addEventListener('keypress', function(event) {
-      
         if (event.key === 'Enter') {
+
             event.preventDefault();
-            addTodo();
+            var inputBox = document.getElementById('inputBox');
+            var task = inputBox.value.trim();
+            if (task !== '') {
+
+                var newTodo = {
+                    id: todos.length + 1,
+                    task: task,
+                    completed: false
+                };
+
+                todos.push(newTodo);
+
+                localStorage.setItem('todos', JSON.stringify(todos));
+
+                inputBox.value = '';
+
+                showTodos();
+            } else {
+                alert('Please enter a task!');
+            }
         }
     });
+
+    
 
     inputDiv.appendChild(inputBox)
     inputDiv.appendChild(addBtn)
